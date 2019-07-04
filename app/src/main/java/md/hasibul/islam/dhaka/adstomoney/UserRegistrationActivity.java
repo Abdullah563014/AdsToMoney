@@ -98,7 +98,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                             if (task.isSuccessful()) {
                                 String userId = firebaseAuth.getCurrentUser().getUid();
                                 ModelClass modelClass = new ModelClass(email, phone, userId);
-                                databaseReference.setValue(modelClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                databaseReference.child(userId).setValue(modelClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
                                         if (task.isSuccessful()) {
@@ -114,7 +114,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                             } else if (task.getException() instanceof FirebaseAuthUserCollisionException) {
                                 Toast.makeText(UserRegistrationActivity.this, "You are already registered", Toast.LENGTH_SHORT).show();
                             } else {
-                                Toast.makeText(UserRegistrationActivity.this, "Failed to create account", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(UserRegistrationActivity.this, "Failed to create account "+task.getException().getMessage(), Toast.LENGTH_LONG).show();
                             }
                         }
                     });
