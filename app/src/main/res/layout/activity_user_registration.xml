@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#A6673AB7"
+    android:padding="20dp"
+    android:layout_height="match_parent"
+    tools:context=".UserRegistrationActivity">
+
+    <EditText
+        android:id="@+id/registrationEmailEditTextId"
+        android:hint="Input your email address"
+        android:textColorHint="#ffffff"
+        android:textColor="#ffffff"
+        android:inputType="textEmailAddress"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:id="@+id/registrationPasswordEditTextId"
+        android:hint="Input your password"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="20dp"
+        android:inputType="numberPassword"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <EditText
+        android:id="@+id/registrationPhoneNumberEditTextId"
+        android:hint="Input your phone number"
+        android:textColorHint="#ffffff"
+        android:layout_marginTop="20dp"
+        android:inputType="phone"
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
+    <Button
+        android:id="@+id/registrationButtonId"
+        android:layout_width="wrap_content"
+        android:text="Registration"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/button_background"
+        android:layout_height="wrap_content" />
+
+    <ProgressBar
+        android:id="@+id/registrationProgressBarId"
+        android:layout_gravity="center"
+        android:layout_width="80dp"
+        android:layout_height="80dp" />
+</LinearLayout>

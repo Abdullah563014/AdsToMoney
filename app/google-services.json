@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "550650267866",
+    "firebase_url": "https://adstomoney-4155a.firebaseio.com",
+    "project_id": "adstomoney-4155a",
+    "storage_bucket": "adstomoney-4155a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:550650267866:android:5bf6cca8b16a43ed",
+        "android_client_info": {
+          "package_name": "md.hasibul.islam.dhaka.adstomoney"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "550650267866-tjjecemtfmukgfo104jrkvqcp422lups.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "md.hasibul.islam.dhaka.adstomoney",
+            "certificate_hash": "f2ff5bb87e621d40ebc9969057e82a0a81a81aa1"
+          }
+        },
+        {
+          "client_id": "550650267866-2h9acu9qfl3i74oeblt1pmij48lrvkej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxjEiQLkJNV9jCwOJowDnwZlb7GfMOQ90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "550650267866-2h9acu9qfl3i74oeblt1pmij48lrvkej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
