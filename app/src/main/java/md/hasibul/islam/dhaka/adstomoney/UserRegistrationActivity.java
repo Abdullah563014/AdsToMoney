@@ -24,6 +24,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class UserRegistrationActivity extends AppCompatActivity {
 
     EditText emailEditText, passwordEditText, phoneEditText;
@@ -76,7 +80,11 @@ public class UserRegistrationActivity extends AppCompatActivity {
             emailEditText.setFocusable(true);
         }
         if (password == null || password.isEmpty()) {
-            passwordEditText.setError("Please input your email address");
+            passwordEditText.setError("Please input your password");
+            passwordEditText.setFocusable(true);
+        }
+        if (password!=null && !password.isEmpty() && password.length()<=5) {
+            passwordEditText.setError("Please input at lest 6 digits password");
             passwordEditText.setFocusable(true);
         }
         if (phone == null || phone.isEmpty()) {
@@ -89,7 +97,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
         }
 
 
-        if (email != null && !email.isEmpty() && password != null && !password.isEmpty() && phone != null && !phone.isEmpty() && isValidateEmail(email)) {
+        if (email != null && !email.isEmpty() && password != null && !password.isEmpty() && password.length()>5 && phone != null && !phone.isEmpty() && isValidateEmail(email)) {
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
@@ -97,7 +105,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
                             progressBar.setVisibility(View.GONE);
                             if (task.isSuccessful()) {
                                 String userId = firebaseAuth.getCurrentUser().getUid();
-                                ModelClass modelClass = new ModelClass(email, phone, userId);
+                                ModelClass modelClass = new ModelClass(email, phone, userId,Utils.todayDate(),"0");
                                 databaseReference.child(userId).setValue(modelClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                                     @Override
                                     public void onComplete(@NonNull Task<Void> task) {
@@ -129,4 +137,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
             return false;
         }
     }
+
+
 }

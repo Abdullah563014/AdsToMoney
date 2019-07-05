@@ -1,9 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:background="#3F51B5"
+    android:gravity="center"
     android:layout_height="match_parent"
     tools:context=".HomeActivity">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:id="@+id/dailyRewardButtonId"
+        android:text="Daily Reward"
+        android:textSize="18sp"
+        android:background="#673AB7"
+        android:paddingRight="40dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp" />
+    <Button
+        android:id="@+id/dailyCheckIndButtonId"
+        android:text="Daily Check In"
+        android:layout_marginTop="20dp"
+        android:textSize="18sp"
+        android:background="#03A9F4"
+        android:paddingRight="40dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp" />
+    <Button
+        android:id="@+id/contactUsButtonId"
+        android:text="Contact Us"
+        android:textSize="18sp"
+        android:background="#8BC34A"
+        android:paddingRight="40dp"
+        android:layout_marginTop="20dp"
+        android:textColor="#ffffff"
+        android:paddingLeft="40dp"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp" />
+
+    <Button
+        android:id="@+id/checkBalanceButtonId"
+        android:text="Check Balance"
+        android:background="@drawable/button_background"
+        android:layout_marginTop="30dp"
+        android:textColor="#ffffff"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content" />
+
+</LinearLayout>
