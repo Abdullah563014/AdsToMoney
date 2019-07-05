@@ -4,6 +4,10 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Utils {
+    public static boolean isUpdated=false;
+
+
+
     public static String todayDate(){
         Date date = new Date();
         SimpleDateFormat df = new SimpleDateFormat("dd");

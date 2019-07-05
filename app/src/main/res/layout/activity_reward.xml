@@ -1,26 +1,46 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="#9A2196F3"
     android:gravity="center"
+    android:orientation="vertical"
     tools:context=".RewardActivity">
 
-    <ImageView
-        android:src="@drawable/trophy_colorful"
-        android:layout_width="200dp"
-        android:layout_height="200dp" />
-    <TextView
-        android:id="@+id/rewardTextViewId"
-        android:layout_marginTop="20dp"
-        android:text="Welcome ! You got 100 points."
-        android:textAlignment="center"
-        android:textSize="20sp"
-        android:textColor="#9C27B0"
+    <LinearLayout
+        android:id="@+id/rewardActivityRootId"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:src="@drawable/trophy_colorful" />
+
+        <TextView
+            android:id="@+id/rewardTextViewId"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Welcome ! You got 100 points."
+            android:textAlignment="center"
+            android:textColor="#9C27B0"
+            android:textSize="20sp" />
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/rewardActivityProgressBarRootId"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <ProgressBar
+            android:id="@+id/rewardActivityProgressBardId"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center" />
+    </LinearLayout>
 </LinearLayout>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="#9C00BCD4"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    tools:context=".ContactUsActivity">
+    <TextView
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:textColor="#673AB7"
+        android:text="To withdraw or any other help, Please contact with me any time."
+        android:textSize="20sp"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:textColor="#673AB7"
+        android:text="Contact:- 01640-366112"
+        android:textSize="25sp"
+        android:layout_height="wrap_content" />
+</LinearLayout>
