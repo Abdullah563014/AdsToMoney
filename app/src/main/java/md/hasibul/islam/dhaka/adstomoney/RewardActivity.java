@@ -49,9 +49,6 @@ public class RewardActivity extends AppCompatActivity {
                 if (values.getRewardDate().equalsIgnoreCase(Utils.todayDate())){
                     if (Utils.isUpdated){
                         progressRootLayout.setVisibility(View.GONE);
-                        rootLayout.setVisibility(View.VISIBLE);
-                    }else {
-                        progressRootLayout.setVisibility(View.GONE);
                         rootLayout.setVisibility(View.GONE);
                     }
                     Toast.makeText(RewardActivity.this, "Try again tomorrow", Toast.LENGTH_SHORT).show();

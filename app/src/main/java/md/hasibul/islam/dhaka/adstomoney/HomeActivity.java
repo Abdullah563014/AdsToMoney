@@ -38,7 +38,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         loadFirebaseData();
 
-//        isCheckAvailable();
     }
 
     private void initializeAll(){
@@ -82,12 +81,14 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     private void dailyRewardMethod(){
         Intent intent=new Intent(this,RewardActivity.class);
-        if (userRewardDate.equalsIgnoreCase(Utils.todayDate())){
-            Utils.isUpdated=true;
-        }else {
-            Utils.isUpdated=false;
+        if (userRewardDate!=null){
+            if (userRewardDate.equalsIgnoreCase(Utils.todayDate())){
+                Utils.isUpdated=true;
+            }else {
+                Utils.isUpdated=false;
+            }
+            startActivity(intent);
         }
-        startActivity(intent);
     }
 
     private void dailyCheckInMethod(){

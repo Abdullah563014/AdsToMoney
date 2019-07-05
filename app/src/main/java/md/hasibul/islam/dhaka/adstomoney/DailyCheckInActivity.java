@@ -53,9 +53,9 @@ public class DailyCheckInActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.adsActivityProgressBarId);
         textView=findViewById(R.id.adsActivityTextViewId);
 
-        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
+        MobileAds.initialize(this,"ca-app-pub-4865136463466803~2761299717");
         interstitialAd=new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        interstitialAd.setAdUnitId("ca-app-pub-4865136463466803/9322838634");
         interstitialAd.loadAd(new AdRequest.Builder().build());
         showAds();
 
@@ -151,7 +151,6 @@ public class DailyCheckInActivity extends AppCompatActivity {
                         public void onComplete(@NonNull Task<Void> task) {
                             if (task.isSuccessful()){
                                 finish();
-                                Toast.makeText(DailyCheckInActivity.this, "Success", Toast.LENGTH_SHORT).show();
                             }
                         }
                     }
