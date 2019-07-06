@@ -73,8 +73,6 @@ public class UserRegistrationActivity extends AppCompatActivity {
         password = passwordEditText.getText().toString();
         phone = phoneEditText.getText().toString();
 
-        progressBar.setVisibility(View.VISIBLE);
-
         if (email == null || email.isEmpty()) {
             emailEditText.setError("Please input your email address");
             emailEditText.setFocusable(true);
@@ -98,6 +96,7 @@ public class UserRegistrationActivity extends AppCompatActivity {
 
 
         if (email != null && !email.isEmpty() && password != null && !password.isEmpty() && password.length()>5 && phone != null && !phone.isEmpty() && isValidateEmail(email)) {
+            progressBar.setVisibility(View.VISIBLE);
             firebaseAuth.createUserWithEmailAndPassword(email, password)
                     .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override

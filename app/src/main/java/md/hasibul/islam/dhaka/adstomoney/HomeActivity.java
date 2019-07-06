@@ -19,7 +19,7 @@ import com.google.firebase.database.ValueEventListener;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener {
 
-    Button dailyRewardButton,dailyCheckInButton,contactUsButton,checkBalanceButton;
+    Button dailyRewardButton, dailyCheckInButton, contactUsButton, checkBalanceButton;
     FirebaseAuth firebaseAuth;
     DatabaseReference databaseReference;
     private String userEmail;
@@ -40,87 +40,103 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     }
 
-    private void initializeAll(){
-        dailyRewardButton=findViewById(R.id.dailyRewardButtonId);
-        dailyCheckInButton=findViewById(R.id.dailyCheckIndButtonId);
-        contactUsButton=findViewById(R.id.contactUsButtonId);
-        checkBalanceButton=findViewById(R.id.checkBalanceButtonId);
+    private void initializeAll() {
+        dailyRewardButton = findViewById(R.id.dailyRewardButtonId);
+        dailyCheckInButton = findViewById(R.id.dailyCheckIndButtonId);
+        contactUsButton = findViewById(R.id.contactUsButtonId);
+        checkBalanceButton = findViewById(R.id.checkBalanceButtonId);
 
         dailyRewardButton.setOnClickListener(this);
         dailyCheckInButton.setOnClickListener(this);
         contactUsButton.setOnClickListener(this);
         checkBalanceButton.setOnClickListener(this);
 
-        firebaseAuth=FirebaseAuth.getInstance();
-        databaseReference= FirebaseDatabase.getInstance().getReference();
+        firebaseAuth = FirebaseAuth.getInstance();
+        databaseReference = FirebaseDatabase.getInstance().getReference();
 
-        sharedPreferences=getSharedPreferences("Counter",MODE_PRIVATE);
+        sharedPreferences = getSharedPreferences("Counter", MODE_PRIVATE);
     }
 
     @Override
     public void onClick(View v) {
-        switch (v.getId()){
+        switch (v.getId()) {
             case R.id.dailyRewardButtonId:
-                dailyRewardMethod();
+                if (Utils.hasConnection(getApplicationContext())) {
+                    dailyRewardMethod();
+                } else {
+                    Toast.makeText(this, "Make sure your internet connection", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.dailyCheckIndButtonId:
-                dailyCheckInMethod();
+                if (Utils.hasConnection(getApplicationContext())) {
+                    dailyCheckInMethod();
+                } else {
+                    Toast.makeText(this, "Make sure your internet connection", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.contactUsButtonId:
-                contactUsMethod();
+                if (Utils.hasConnection(getApplicationContext())){
+                    contactUsMethod();
+                }else {
+                    Toast.makeText(this, "Make sure your internet connection", Toast.LENGTH_SHORT).show();
+                }
                 break;
 
             case R.id.checkBalanceButtonId:
-                checkBalanceMethod();
+                if (Utils.hasConnection(getApplicationContext())){
+                    checkBalanceMethod();
+                }else {
+                    Toast.makeText(this, "Make sure your internet connection", Toast.LENGTH_SHORT).show();
+                }
                 break;
         }
     }
 
 
-    private void dailyRewardMethod(){
-        Intent intent=new Intent(this,RewardActivity.class);
-        if (userRewardDate!=null){
-            if (userRewardDate.equalsIgnoreCase(Utils.todayDate())){
-                Utils.isUpdated=true;
-            }else {
-                Utils.isUpdated=false;
+    private void dailyRewardMethod() {
+        Intent intent = new Intent(this, RewardActivity.class);
+        if (userRewardDate != null) {
+            if (userRewardDate.equalsIgnoreCase(Utils.todayDate())) {
+                Utils.isUpdated = true;
+            } else {
+                Utils.isUpdated = false;
             }
             startActivity(intent);
         }
     }
 
-    private void dailyCheckInMethod(){
-        if (isCheckAvailable()){
-            Intent intent =new Intent(this,DailyCheckInActivity.class);
+    private void dailyCheckInMethod() {
+        if (isCheckAvailable()) {
+            Intent intent = new Intent(this, DailyCheckInActivity.class);
             startActivity(intent);
         }
     }
 
-    private void contactUsMethod(){
-        Intent intent=new Intent(this,ContactUsActivity.class);
+    private void contactUsMethod() {
+        Intent intent = new Intent(this, ContactUsActivity.class);
         startActivity(intent);
     }
 
-    private void checkBalanceMethod(){
-        if (userPoints!=null && !userPoints.isEmpty()){
-            Toast.makeText(this, "Your Points is "+userPoints, Toast.LENGTH_LONG).show();
+    private void checkBalanceMethod() {
+        if (userPoints != null && !userPoints.isEmpty()) {
+            Toast.makeText(this, "Your Points is " + userPoints, Toast.LENGTH_LONG).show();
         }
     }
 
-    private void loadFirebaseData(){
-        if (databaseReference!=null){
+    private void loadFirebaseData() {
+        if (databaseReference != null) {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    userId=firebaseAuth.getCurrentUser().getUid();
-                    ModelClass modelClass=dataSnapshot.child(userId).getValue(ModelClass.class);
-                    userEmail=modelClass.getEmail();
-                    userPhone=modelClass.getPhone();
-                    userId=modelClass.getUserId();
-                    userRewardDate=modelClass.getRewardDate();
-                    userPoints=modelClass.getPoints();
+                    userId = firebaseAuth.getCurrentUser().getUid();
+                    ModelClass modelClass = dataSnapshot.child(userId).getValue(ModelClass.class);
+                    userEmail = modelClass.getEmail();
+                    userPhone = modelClass.getPhone();
+                    userId = modelClass.getUserId();
+                    userRewardDate = modelClass.getRewardDate();
+                    userPoints = modelClass.getPoints();
 
                     isCheckAvailable();
                 }
@@ -130,25 +146,25 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                     Toast.makeText(HomeActivity.this, "Failed to load user data", Toast.LENGTH_SHORT).show();
                 }
             });
-        }else {
+        } else {
             initializeAll();
             loadFirebaseData();
         }
     }
 
 
-    private boolean isCheckAvailable(){
-        if (userRewardDate.equalsIgnoreCase(Utils.todayDate())){
-            if (sharedPreferences.getInt("count",0)>=10){
+    private boolean isCheckAvailable() {
+        if (userRewardDate.equalsIgnoreCase(Utils.todayDate())) {
+            if (sharedPreferences.getInt("count", 0) >= 10) {
                 dailyCheckInButton.setEnabled(false);
                 return false;
-            }else {
+            } else {
                 dailyCheckInButton.setEnabled(true);
                 return true;
             }
-        }else {
-            SharedPreferences.Editor editor=sharedPreferences.edit();
-            editor.putInt("count",0);
+        } else {
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putInt("count", 0);
             editor.apply();
             dailyCheckInButton.setEnabled(true);
             return true;

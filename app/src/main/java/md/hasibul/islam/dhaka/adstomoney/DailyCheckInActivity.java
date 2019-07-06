@@ -30,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
+import java.util.Objects;
 
 public class DailyCheckInActivity extends AppCompatActivity {
 
@@ -115,9 +116,9 @@ public class DailyCheckInActivity extends AppCompatActivity {
             databaseReference.addValueEventListener(new ValueEventListener() {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    userId=firebaseAuth.getCurrentUser().getUid();
+                    userId= Objects.requireNonNull(firebaseAuth.getCurrentUser()).getUid();
                     ModelClass modelClass=dataSnapshot.child(userId).getValue(ModelClass.class);
-                    userEmail=modelClass.getEmail();
+                    userEmail= Objects.requireNonNull(modelClass).getEmail();
                     userPhone=modelClass.getPhone();
                     userId=modelClass.getUserId();
                     userRewardDate=modelClass.getRewardDate();
