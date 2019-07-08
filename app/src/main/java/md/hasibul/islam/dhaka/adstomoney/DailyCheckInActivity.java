@@ -4,6 +4,8 @@ import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.doubleclick.PublisherAdRequest;
+import com.google.android.gms.ads.doubleclick.PublisherInterstitialAd;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
@@ -54,10 +56,11 @@ public class DailyCheckInActivity extends AppCompatActivity {
         progressBar=findViewById(R.id.adsActivityProgressBarId);
         textView=findViewById(R.id.adsActivityTextViewId);
 
-        MobileAds.initialize(this,"ca-app-pub-4865136463466803~2761299717");
+        MobileAds.initialize(this,"ca-app-pub-3940256099942544~3347511713");
         interstitialAd=new InterstitialAd(this);
-        interstitialAd.setAdUnitId("ca-app-pub-4865136463466803/9322838634");
+        interstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         interstitialAd.loadAd(new AdRequest.Builder().build());
+
         showAds();
 
         loadFirebaseData();

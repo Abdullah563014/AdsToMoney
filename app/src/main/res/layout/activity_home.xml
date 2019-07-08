@@ -22,7 +22,7 @@
         android:layout_height="100dp" />
     <Button
         android:id="@+id/dailyCheckIndButtonId"
-        android:text="Daily Check In"
+        android:text="Start Earn"
         android:layout_marginTop="20dp"
         android:textSize="18sp"
         android:background="#03A9F4"
@@ -33,7 +33,7 @@
         android:layout_height="100dp" />
     <Button
         android:id="@+id/contactUsButtonId"
-        android:text="Contact Us"
+        android:text="Withdraw"
         android:textSize="18sp"
         android:background="#8BC34A"
         android:paddingRight="40dp"

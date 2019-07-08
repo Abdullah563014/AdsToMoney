@@ -28,6 +28,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private String userRewardDate;
     private String userPoints;
     SharedPreferences sharedPreferences;
+    private int availAbleAds=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         databaseReference = FirebaseDatabase.getInstance().getReference();
 
         sharedPreferences = getSharedPreferences("Counter", MODE_PRIVATE);
+        availAbleAds=sharedPreferences.getInt("count",0);
     }
 
     @Override
@@ -157,9 +159,12 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         if (userRewardDate.equalsIgnoreCase(Utils.todayDate())) {
             if (sharedPreferences.getInt("count", 0) >= 10) {
                 dailyCheckInButton.setEnabled(false);
+                dailyCheckInButton.setText("Ads Available "+0+" Times");
                 return false;
             } else {
+                availAbleAds=sharedPreferences.getInt("count",0);
                 dailyCheckInButton.setEnabled(true);
+                dailyCheckInButton.setText("Ads Available "+(10-availAbleAds)+" Times");
                 return true;
             }
         } else {
@@ -167,6 +172,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             editor.putInt("count", 0);
             editor.apply();
             dailyCheckInButton.setEnabled(true);
+            dailyCheckInButton.setText("Ads Available "+10+" Times");
             return true;
         }
     }
